@@ -1,0 +1,69 @@
+{% load static %}
+<!doctype html>
+<!--[if IE 7]>
+<html class="ie ie7 no-js" lang="en-US">
+<![endif]-->
+<!--[if IE 8]>
+<html class="ie ie8 no-js" lang="en-US">
+<![endif]-->
+<!--[if !(IE 7) | !(IE 8)]><!-->
+<html lang="en" class="no-js">
+  <head>
+    <!-- Basic need -->
+    <title>Block Buster</title>
+    <meta charset="UTF-8" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="" />
+    <link rel="profile" href="#" />
+
+    <!--Google Font-->
+    <link
+      rel="stylesheet"
+      href="http://fonts.googleapis.com/css?family=Dosis:400,700,500|Nunito:300,400,600"
+    />
+    <!-- Mobile specific meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="format-detection" content="telephone-no" />
+
+    <!-- CSS files -->
+    <link rel="stylesheet" href="{% static "filmReviewApp/css/plugins.css" %}" />
+    <link rel="stylesheet" href="{% static "filmReviewApp/css/style.css" %}" />
+  </head>
+  <body>
+    <!--preloading-->
+    <div id="preloader">
+      <img class="logo" src="{% static "filmReviewApp/images/logo1.png" %}" alt="" width="119" height="58" />
+      <div id="status">
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+    <!--end of preloading-->
+    <!--login form popup-->
+    {% include "filmReviewApp/login.html" %}
+    <!--end of login form popup-->
+    <!--signup form popup-->
+    {% include "filmReviewApp/signup.html" %}
+    <!--end of signup form popup-->
+
+    <!-- BEGIN | Header -->
+    {% include "filmReviewApp/navbar.html" %}
+    <!-- END | Header -->
+    {% include "filmReviewApp/slider.html" %}
+    {% include "filmReviewApp/movelist.html" %}
+    {% include "filmReviewApp/trailers.html" %}
+
+    <!-- latest new v1 section-->
+    {% include "filmReviewApp/news.html" %}
+    <!--end of latest new v1 section-->
+    <!-- footer section-->
+    {% include "filmReviewApp/footer.html" %}
+    <!-- end of footer section-->
+
+    <script src="{% static "filmReviewApp/js/jquery.js" %}"></script>
+    <script src="{% static "filmReviewApp/js/plugins.js" %}"></script>
+    <script src="{% static "filmReviewApp/js/plugins2.js" %}"></script>
+    <script src="{% static "filmReviewApp/js/custom.js" %}"></script>
+  </body>
+</html>
