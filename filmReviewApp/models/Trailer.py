@@ -1,4 +1,4 @@
-from django.db.models import CharField, DurationField, IntegerField, Model
+from django.db.models import CharField, IntegerField, Model
 
 
 class Trailer(Model):
@@ -8,4 +8,4 @@ class Trailer(Model):
     img_width = IntegerField()
     img_height = IntegerField()
     description = CharField()
-    duration = DurationField()
+    duration = CharField(10)
