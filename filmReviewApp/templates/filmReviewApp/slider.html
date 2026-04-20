@@ -4,10 +4,11 @@
       <div class="social-link">
         <p>Follow us:</p>
         <!-- DB -->
-        <a href="#"><i class="ion-social-facebook"></i></a>
-        <a href="#"><i class="ion-social-twitter"></i></a>
-        <a href="#"><i class="ion-social-googleplus"></i></a>
-        <a href="#"><i class="ion-social-youtube"></i></a>
+        {% for social in socials %}
+        <a href="{{ social.url }}" class="{{ social.anchor_class }}"
+          ><i class="{{ social.icon_class }}"></i
+        ></a>
+        {% endfor %}
       </div>
       <div class="slick-multiItemSlider">
         <!--  DB  -->

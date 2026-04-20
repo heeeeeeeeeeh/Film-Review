@@ -5,6 +5,9 @@ from django.template import loader
 
 # Create your views here.
 def index(request):
-    context = {"trailers": models.Trailer.objects.all()}
+    context = {
+        "trailers": models.Trailer.objects.all(),
+        "socials": models.SocialLink.objects.all(),
+    }
     template = loader.get_template("filmReviewApp/base.html")
     return HttpResponse(template.render(context, request))
