@@ -12,3 +12,6 @@ class Slider(models.Model):
     movie_title = models.CharField(max_length=20)
     lower_rating = models.CharField(max_length=5)
     upper_rating = models.CharField(max_length=5)
+
+    def __str__(self):
+        return self.movie_title

@@ -6,3 +6,6 @@ class SocialLink(models.Model):
     anchor_class = models.CharField(max_length=2)
     icon_class = models.CharField(max_length=30)
     url = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.name
