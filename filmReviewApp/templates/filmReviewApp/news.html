@@ -1,10 +1,13 @@
+{% load static %}
+
 <div class="latestnew">
   <div class="container">
     <div class="row ipad-width">
       <div class="col-md-8">
         <div class="ads">
-          <!-- DB -->
-          <img src="images/uploads/ads2.png" alt="" width="728" height="106" />
+          {% for ad in ads_news %}
+          <img src="{% static ad.img_src %}" alt="" width="{{ ad.img_width }}" height="{{ ad.img_height }}">
+          {% endfor %}
         </div>
         <div class="title-hd">
           <h2>Latest news</h2>
@@ -16,7 +19,7 @@
                 <div class="blog-item-style-1">
                   <!-- DB -->
                   <img
-                    src="images/uploads/blog-it1.jpg"
+                    src="{% static 'images/uploads/blog-it1.jpg' %}"
                     alt=""
                     width="170"
                     height="250"
