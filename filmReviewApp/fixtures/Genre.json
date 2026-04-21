@@ -1,0 +1,1 @@
+[{"model": "filmReviewApp.genre", "pk": 1, "fields": {"name": "Sci-fi", "color": "blue"}}, {"model": "filmReviewApp.genre", "pk": 2, "fields": {"name": "action", "color": "yell"}}, {"model": "filmReviewApp.genre", "pk": 3, "fields": {"name": "comedy", "color": "green"}}, {"model": "filmReviewApp.genre", "pk": 4, "fields": {"name": "adventure", "color": "orange"}}]
