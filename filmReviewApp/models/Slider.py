@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.postgres.fields import ArrayField
+from .Genre import Genre
 
 
 class Slider(models.Model):
@@ -7,7 +7,8 @@ class Slider(models.Model):
     image_width = models.IntegerField()
     image_height = models.IntegerField()
     anchor_url = models.CharField(max_length=200)
-    movie_genre = ArrayField(models.CharField(max_length=10), blank=True, default=list)
+    movie_genres = models.ManyToManyField(Genre, related_name="sliders", blank=True)
+
     movie_title = models.CharField(max_length=20)
     lower_rating = models.CharField(max_length=5)
     upper_rating = models.CharField(max_length=5)
