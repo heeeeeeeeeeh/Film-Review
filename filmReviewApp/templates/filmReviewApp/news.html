@@ -17,32 +17,14 @@
             <div id="tab31" class="tab active">
               <div class="row">
                 <div class="blog-item-style-1">
-                  <!-- DB -->
-                  <img
-                    src="{% static 'images/uploads/blog-it1.jpg' %}"
-                    alt=""
-                    width="170"
-                    height="250"
-                  />
+                  {% if news_featured %}
+                  <img src="{% static news_featured.img_src %}" alt="{{ news_featured.img_alt }}" width="{{ news_featured.img_width }}" height="{{ news_featured.img_height }}">
                   <div class="blog-it-infor">
-                    <!-- DB -->
-                    <h3>
-                      <a href="#"
-                        >Brie Larson to play first female white house candidate
-                        Victoria Woodull in Amazon film</a
-                      >
-                    </h3>
-                    <span class="time">13 hours ago</span>
-                    <p>
-                      Exclusive: <span>Amazon Studios </span>has acquired
-                      Victoria Woodhull, with Oscar winning Room star
-                      <span>Brie Larson</span> polsed to produce, and play the
-                      first female candidate for the presidency of the United
-                      States. Amazon bought it in a pitch package deal.
-                      <span> Ben Kopit</span>, who wrote the Warner Bros film
-                      <span>Libertine</span> that has...
-                    </p>
+                    <h3><a href="#">{{ news_featured.title }}</a></h3>
+                    <span class="time">{{ news_featured.time }}</span>
+                    <p>{{ news_featured.content }}</p>
                   </div>
+                  {% endif %}
                 </div>
               </div>
             </div>
@@ -57,46 +39,12 @@
           </div>
           <div class="more-items">
             <div class="left">
-              <!-- DB -->
+              {% for news in news_extra %}
               <div class="more-it">
-                <h6>
-                  <a href="#"
-                    >Michael Shannon Frontrunner to play Cable in “Deadpool
-                    2”</a
-                  >
-                </h6>
-                <span class="time">13 hours ago</span>
+                <h6><a href="#">{{ news.title }}</a></h6>
+                <span class="time">{{ news.time }}</span>
               </div>
-              <div class="more-it">
-                <h6>
-                  <a href="#"
-                    >French cannibal horror “Raw” inspires L.A. theater to hand
-                    out “Barf Bags”</a
-                  >
-                </h6>
-                <span class="time">13 hours ago</span>
-              </div>
-            </div>
-            <div class="right">
-              <!-- DB -->
-              <div class="more-it">
-                <h6>
-                  <a href="#"
-                    >Laura Dern in talks to join Justin Kelly’s biopic “JT
-                    Leroy”</a
-                  >
-                </h6>
-                <span class="time">13 hours ago</span>
-              </div>
-              <div class="more-it">
-                <h6>
-                  <a href="#"
-                    >China punishes more than 300 cinemas for box office
-                    cheating</a
-                  >
-                </h6>
-                <span class="time">13 hours ago</span>
-              </div>
+              {% endfor %}
             </div>
           </div>
         </div>

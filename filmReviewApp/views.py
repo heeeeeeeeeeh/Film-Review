@@ -13,7 +13,9 @@ def index(request):
         "socials": models.SocialLink.objects.all(),
         "genres": {genre.name: genre.color for genre in models.Genre.objects.all()},
         "sliders": models.Slider.objects.all().order_by("id"),
-        "ads_news": models.Advertisement.objects.filter(section="news")
+        "ads_news": models.Advertisement.objects.filter(section="news"),
+        "news_featured": models.News.objects.filter(section="featured").first(),
+        "news_extra": models.News.objects.filter(section="extra")
     }
     template = loader.get_template("filmReviewApp/base.html")
     return HttpResponse(template.render(context, request))
