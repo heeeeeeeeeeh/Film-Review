@@ -1,0 +1,9 @@
+[
+{
+  "model": "filmReviewApp.tweet",
+  "pk": 1,
+  "fields": {
+    "content": "Just watched Interstellar again 🚀🌌—still blown away by the visuals, the emotion, and that mind-bending journey through space and time. A true masterpiece that never gets old. ⭐️ #MovieNight #SciFi"
+  }
+}
+]
