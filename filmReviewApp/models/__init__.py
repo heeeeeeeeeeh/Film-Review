@@ -6,3 +6,5 @@ from .Advertisement import Advertisement
 from .Celebrity import Celebrity
 from .MovieTheater import MovieTheater
 from .MovieTv import MovieTv
+from .News import News
+from .Tweet import Tweet
