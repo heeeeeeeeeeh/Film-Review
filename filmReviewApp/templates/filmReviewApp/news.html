@@ -54,16 +54,11 @@
           <div class="sb-twitter sb-it">
             <h4 class="sb-title">Tweet to us</h4>
             <div class="slick-tw">
-              <!--  DB  -->
+              {% for tweet in tweets %}
               <div class="tweet item" id="">
-                <!-- Put your twiter id here -->
-                Just watched Interstellar again 🚀🌌—still blown away by the
-                visuals, the emotion, and that mind-bending journey through
-                space and time. A true masterpiece that never gets old. ⭐️
-                #MovieNight #SciFiD
+                {{ tweet.content }}
               </div>
-              <div class="tweet item" id="">
-                <!-- Put your 2nd twiter account id here -->
+              {% endfor %}
               </div>
             </div>
           </div>
