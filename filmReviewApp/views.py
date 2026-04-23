@@ -50,4 +50,21 @@ def signup(request):
         
     return render(request, "signup.html")
 
+from .models import Celebrity, MovieTheater, MovieTv
+
+def movielisting(request):
+    context = {
+        "celebrities": Celebrity.objects.all(),
+        
+        "theaters_popular": MovieTheater.objects.filter(type="popular"),
+        "theaters_coming": MovieTheater.objects.filter(type="coming soon"),
+        
+        "tv_popular": MovieTv.objects.filter(type="popular"),
+        "tv_coming": MovieTv.objects.filter(type="coming soon"),
+    }
+    return render(request, "filmReviewApp/movielist.html", context)
+
+def movesingle(request, id):
+    movie = MovieTv.objects.get(id=id)
+    return render(request, "filmReviewApp/movesingle.html", {"movie":movie})
 
