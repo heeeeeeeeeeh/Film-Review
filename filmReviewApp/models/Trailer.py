@@ -7,8 +7,8 @@ class Trailer(Model):
     img_alt = CharField(max_length=100)
     img_width = IntegerField()
     img_height = IntegerField()
-    description = CharField()
-    duration = CharField(10)
+    description = CharField(max_length=255)
+    duration = CharField(max_length=10)
 
     def __str__(self):
         return self.description
