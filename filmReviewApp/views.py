@@ -21,6 +21,7 @@ def index(request):
     template = loader.get_template("filmReviewApp/base.html")
     return HttpResponse(template.render(context, request))
 
+
 def login(request):
     if request.method == "POST":
         username = request.POST.get("username")
@@ -30,11 +31,12 @@ def login(request):
 
         if user is not None:
             login(request, user)
-            return redirect("index") 
+            return redirect("index")
         else:
             messages.error(request, "Invalid username or password")
 
     return render(request, "login.html")
+
 
 def signup(request):
     if request.method == "POST":
@@ -47,5 +49,24 @@ def signup(request):
             User.objects.create_user(username=username, password=password)
             messages.success(request, "Account created, login")
             return redirect("login")
-        
+
     return render(request, "signup.html")
+
+
+from .models import Celebrity, MovieTheater, MovieTv
+
+
+def movielisting(request):
+    context = {
+        "celebrities": Celebrity.objects.all(),
+        "theaters_popular": MovieTheater.objects.filter(type="popular"),
+        "theaters_coming": MovieTheater.objects.filter(type="coming soon"),
+        "tv_popular": MovieTv.objects.filter(type="popular"),
+        "tv_coming": MovieTv.objects.filter(type="coming soon"),
+    }
+    return render(request, "filmReviewApp/movielist.html", context)
+
+
+def moviesingle(request):
+    template = loader.get_template("filmReviewApp/moviesingle.html")
+    return HttpResponse(template.render({}, request))
