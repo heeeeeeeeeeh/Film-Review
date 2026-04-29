@@ -34,7 +34,7 @@ def login(request):
         else:
             messages.error(request, "Invalid username or password")
 
-    return render(request, "login.html")
+    return render(request, "filmReviewApp/login.html")
 
 def signup(request):
     if request.method == "POST":
@@ -48,4 +48,4 @@ def signup(request):
             messages.success(request, "Account created, login")
             return redirect("login")
         
-    return render(request, "signup.html")
+    return render(request, "filmReviewApp/signup.html")
