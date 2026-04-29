@@ -53,7 +53,7 @@ def signup(request):
     return render(request, "signup.html")
 
 
-from .models import Celebrity, MovieTheater, MovieTv
+from .models import Celebrity, MovieTheater, MovieTv, Advertisement
 
 
 def movielisting(request):
@@ -63,6 +63,7 @@ def movielisting(request):
         "theaters_coming": MovieTheater.objects.filter(type="coming soon"),
         "tv_popular": MovieTv.objects.filter(type="popular"),
         "tv_coming": MovieTv.objects.filter(type="coming soon"),
+        "ads": Advertisement.objects.all(),
     }
     return render(request, "filmReviewApp/movielist.html", context)
 
