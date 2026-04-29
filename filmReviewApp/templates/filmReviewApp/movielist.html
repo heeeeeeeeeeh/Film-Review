@@ -2,23 +2,21 @@
   <div class="container">
     <div class="row ipad-width">
       <div class="col-md-8">
+
+        
         <div class="title-hd">
           <h2>in theater</h2>
-          <a href="#" class="viewall"
-            >View all <i class="ion-ios-arrow-right"></i
-          ></a>
+          <a href="#" class="viewall">View all <i class="ion-ios-arrow-right"></i></a>
         </div>
         <div class="tabs">
           <ul class="tab-links">
             <li class="active"><a href="#tab1">#Popular</a></li>
-            <li><a href="#tab2"> #Coming soon</a></li>
+            <li><a href="#tab2">#Coming soon</a></li>
           </ul>
           <div class="tab-content">
             <div id="tab1" class="tab active">
               <div class="row">
                 <div class="slick-multiItem">
-                  <!-- Popular tab  -->
-               
                   {% for movie in theaters_popular %}
                   <div class="slide-it">
                     <div class="movie-item">
@@ -26,7 +24,7 @@
                         <img src="{{ movie.img_src }}" alt="{{ movie.movie_title }}" width="{{ movie.img_width }}" height="{{ movie.img_height }}" />
                       </div>
                       <div class="hvr-inner">
-                        <a href="{% url 'movesingle' movie.id %}">Read more <i class="ion-android-arrow-dropright"></i></a>
+                        <a href="{% url 'moviesingle' movie.id %}">Read more <i class="ion-android-arrow-dropright"></i></a>
                       </div>
                       <div class="title-in">
                         <h6><a href="#">{{ movie.movie_title }}</a></h6>
@@ -35,50 +33,13 @@
                     </div>
                   </div>
                   {% endfor %}
-
-                  {% for show in tv_popular %}
-                  <div class="slide-it">
-                    <div class="movie-item">
-                      <div class="mv-img">
-                        <img src="{{ show.img_src }}" alt="{{ show.movie_title }}" width="{{ show.img_width }}" height="{{ show.img_height }}" />
-                      </div>
-                      <div class="hvr-inner">
-                        <a href="{% url 'movesingle' show.id %}">Read more <i class="ion-android-arrow-dropright"></i></a>
-                      </div>
-                      <div class="title-in">
-                        <h6><a href="#">{{ show.movie_title }}</a></h6>
-                        <p><i class="ion-android-star"></i><span>{{ show.lower_rating }}</span> /{{ show.upper_rating }}</p>
-                      </div>
-                    </div>
-                  </div>
-                  {% endfor %}
-
                 </div>
               </div>
             </div>
 
-            <!-- Coming Soon Tab -->
             <div id="tab2" class="tab">
               <div class="row">
                 <div class="slick-multiItem">
-
-                  {% for show in tv_coming %}
-                  <div class="slide-it">
-                    <div class="movie-item">
-                      <div class="mv-img">
-                        <img src="{{ show.img_src }}" alt="{{ show.movie_title }}" width="{{ show.img_width }}" height="{{ show.img_height }}" />
-                      </div>
-                      <div class="hvr-inner">
-                        <a href="{% url 'movesingle' show.id %}">Read more <i class="ion-android-arrow-dropright"></i></a>
-                      </div>
-                      <div class="title-in">
-                        <h6><a href="#">{{ show.movie_title }}</a></h6>
-                        <p><i class="ion-android-star"></i><span>{{ show.lower_rating }}</span> /{{ show.upper_rating }}</p>
-                      </div>
-                    </div>
-                  </div>
-                  {% endfor %}
-
                   {% for movie in theaters_coming %}
                   <div class="slide-it">
                     <div class="movie-item">
@@ -86,7 +47,7 @@
                         <img src="{{ movie.img_src }}" alt="{{ movie.movie_title }}" width="{{ movie.img_width }}" height="{{ movie.img_height }}" />
                       </div>
                       <div class="hvr-inner">
-                        <a href="{% url 'movesingle' movie.id %}">Read more <i class="ion-android-arrow-dropright"></i></a>
+                        <a href="{% url 'moviesingle' movie.id %}">Read more <i class="ion-android-arrow-dropright"></i></a>
                       </div>
                       <div class="title-in">
                         <h6><a href="#">{{ movie.movie_title }}</a></h6>
@@ -95,16 +56,74 @@
                     </div>
                   </div>
                   {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
+        
+        <div class="title-hd">
+          <h2>on tv</h2>
+          <a href="#" class="viewall">View all <i class="ion-ios-arrow-right"></i></a>
+        </div>
+        <div class="tabs">
+          <ul class="tab-links">
+            <li class="active"><a href="#tab3">#Popular</a></li>
+            <li><a href="#tab4">#Coming soon</a></li>
+          </ul>
+          <div class="tab-content">
+            <div id="tab3" class="tab active">
+              <div class="row">
+                <div class="slick-multiItem">
+                  {% for show in tv_popular %}
+                  <div class="slide-it">
+                    <div class="movie-item">
+                      <div class="mv-img">
+                        <img src="{{ show.img_src }}" alt="{{ show.movie_title }}" width="{{ show.img_width }}" height="{{ show.img_height }}" />
+                      </div>
+                      <div class="hvr-inner">
+                        <a href="{% url 'moviesingle' show.id %}">Read more <i class="ion-android-arrow-dropright"></i></a>
+                      </div>
+                      <div class="title-in">
+                        <h6><a href="#">{{ show.movie_title }}</a></h6>
+                        <p><i class="ion-android-star"></i><span>{{ show.lower_rating }}</span> /{{ show.upper_rating }}</p>
+                      </div>
+                    </div>
+                  </div>
+                  {% endfor %}
                 </div>
               </div>
             </div>
 
+            <div id="tab4" class="tab">
+              <div class="row">
+                <div class="slick-multiItem">
+                  {% for show in tv_coming %}
+                  <div class="slide-it">
+                    <div class="movie-item">
+                      <div class="mv-img">
+                        <img src="{{ show.img_src }}" alt="{{ show.movie_title }}" width="{{ show.img_width }}" height="{{ show.img_height }}" />
+                      </div>
+                      <div class="hvr-inner">
+                        <a href="{% url 'moviesingle' show.id %}">Read more <i class="ion-android-arrow-dropright"></i></a>
+                      </div>
+                      <div class="title-in">
+                        <h6><a href="#">{{ show.movie_title }}</a></h6>
+                        <p><i class="ion-android-star"></i><span>{{ show.lower_rating }}</span> /{{ show.upper_rating }}</p>
+                      </div>
+                    </div>
+                  </div>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+
       </div>
 
-      <!-- ads -->
+      
       <div class="col-md-4">
         <div class="sidebar">
           <div class="ads">
@@ -112,7 +131,6 @@
             <img src="{{ ad.img_src }}" alt="Advertisement" width="{{ ad.img_width }}" height="{{ ad.img_height }}" />
             {% endfor %}
           </div>
-            <!--Celebritities-->
           <div class="celebrities">
             <h4 class="sb-title">Spotlight Celebrities</h4>
             {% for celeb in celebrities %}
@@ -127,9 +145,9 @@
             </div>
             {% endfor %}
           </div>
-
         </div>
       </div>
+
     </div>
   </div>
 </div>

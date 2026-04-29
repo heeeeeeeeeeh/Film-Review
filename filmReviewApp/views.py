@@ -17,6 +17,12 @@ def index(request):
         "news_featured": models.News.objects.filter(section="featured").first(),
         "news_extra": models.News.objects.filter(section="extra"),
         "tweets": models.Tweet.objects.all(),
+        "celebrities": models.Celebrity.objects.all(),
+        "theaters_popular": models.MovieTheater.objects.filter(type="Popular"),
+        "theaters_coming": models.MovieTheater.objects.filter(type="Coming Soon"),
+        "tv_popular": models.MovieTv.objects.filter(type="Popular"),
+        "tv_coming": models.MovieTv.objects.filter(type="Coming Soon"),
+        "ads": models.Advertisement.objects.all(),
     }
     template = loader.get_template("filmReviewApp/base.html")
     return HttpResponse(template.render(context, request))
@@ -59,10 +65,10 @@ from .models import Celebrity, MovieTheater, MovieTv, Advertisement
 def movielisting(request):
     context = {
         "celebrities": Celebrity.objects.all(),
-        "theaters_popular": MovieTheater.objects.filter(type="popular"),
-        "theaters_coming": MovieTheater.objects.filter(type="coming soon"),
-        "tv_popular": MovieTv.objects.filter(type="popular"),
-        "tv_coming": MovieTv.objects.filter(type="coming soon"),
+        "theaters_popular": MovieTheater.objects.filter(type="Popular"),
+        "theaters_coming": MovieTheater.objects.filter(type="Coming soon"),
+        "tv_popular": MovieTv.objects.filter(type="Popular"),
+        "tv_coming": MovieTv.objects.filter(type="Coming soon"),
         "ads": Advertisement.objects.all(),
     }
     return render(request, "filmReviewApp/movielist.html", context)

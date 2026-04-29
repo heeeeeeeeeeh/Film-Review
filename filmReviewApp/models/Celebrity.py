@@ -3,6 +3,7 @@ from django.db import models
 class Celebrity(models.Model):
     img_width = models.IntegerField()
     img_height = models.IntegerField()
+    img_src = models.CharField(max_length=200, default='') 
     anchor_url = models.CharField(max_length=200)
     celebrity_name = models.CharField(max_length=50)
     celebrity_url = models.CharField(max_length=200)
