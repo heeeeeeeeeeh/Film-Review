@@ -77,3 +77,17 @@ def movielisting(request):
 def moviesingle(request):
     template = loader.get_template("filmReviewApp/moviesingle.html")
     return HttpResponse(template.render({}, request))
+
+
+from .models import Newsletter
+
+def newsletter_signup(request):
+    if request.method == "POST":
+        email = request.POST.get("email")
+        if email:
+         if Newsletter.objects.filter(email=email).exists():
+             messages.error(request, "Email already subscribed")
+         else:
+             Newsletter.objects.create(email=email)
+             messages.success(request, "Succesfully subscribed")
+             return redirect("index")
