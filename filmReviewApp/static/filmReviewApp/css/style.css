@@ -8221,6 +8221,7 @@ button.btn {
   background: transparent;
   color:  #dd003f;
   -webkit-appearance: none;
+  margin-top: 30px;
 }
 footer .flex-parent-ft .flex-child-ft form {
   margin-bottom: 20px;
