@@ -46,12 +46,13 @@
           Subscribe to our newsletter system now <br />
           to get latest news from us.
         </p>
-        <form action="#">
-          <input type="text" placeholder="Enter your email..." />
+        <form action="{% url 'newsletter' %}" method="POST">
+          {% csrf_token %}
+          <input type="text" name="email" placeholder="Enter your email..." />
+          <button type="submit" class="btn">
+            Subscribe now <i class="ion-ios-arrow-forward"></i>
+          </button>
         </form>
-        <a href="#" class="btn"
-          >Subscribe now <i class="ion-ios-arrow-forward"></i
-        ></a>
       </div>
     </div>
   </div>
