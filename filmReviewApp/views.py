@@ -1,14 +1,12 @@
+from django import template
 from django.http import JsonResponse
-
-from filmReviewApp.forms import NewsletterForm
-
-from . import models
 from django.shortcuts import HttpResponse, render, redirect
 from django.template import loader
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.contrib import messages
-
+from . import models
+from .forms import NewsletterForm
 
 # Create your views here.
 def index(request):
@@ -26,7 +24,7 @@ def index(request):
         "theaters_coming": models.MovieTheater.objects.filter(type="Coming Soon"),
         "tv_popular": models.MovieTv.objects.filter(type="Popular"),
         "tv_coming": models.MovieTv.objects.filter(type="Coming Soon"),
-        "ads": models.Advertisement.objects.all(),
+        "ads": models.Advertisement.objects.filter(section="movie"),
     }
     template = loader.get_template("filmReviewApp/base.html")
     return HttpResponse(template.render(context, request))
@@ -45,7 +43,7 @@ def login(request):
         else:
             messages.error(request, "Invalid username or password")
 
-    return render(request, "login.html")
+    return render(request, "filmReviewApp/login.html")
 
 
 def signup(request):
@@ -59,11 +57,8 @@ def signup(request):
             User.objects.create_user(username=username, password=password)
             messages.success(request, "Account created, login")
             return redirect("login")
-
-    return render(request, "signup.html")
-
-
-from .models import Celebrity, MovieTheater, MovieTv, Advertisement
+        
+    return render(request, "filmReviewApp/signup.html")
 
 
 def movielisting(request):
@@ -73,7 +68,7 @@ def movielisting(request):
         "theaters_coming": MovieTheater.objects.filter(type="Coming soon"),
         "tv_popular": MovieTv.objects.filter(type="Popular"),
         "tv_coming": MovieTv.objects.filter(type="Coming soon"),
-        "ads": Advertisement.objects.all(),
+        "ads": Advertisement.objects.filter(section="movie"),
     }
     return render(request, "filmReviewApp/movielist.html", context)
 
@@ -81,9 +76,6 @@ def movielisting(request):
 def moviesingle(request):
     template = loader.get_template("filmReviewApp/moviesingle.html")
     return HttpResponse(template.render({}, request))
-
-
-from .models import Newsletter
 
 def newsletter_signup(request):
     if request.method == "POST":

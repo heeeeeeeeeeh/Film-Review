@@ -1,1 +1,22 @@
-[{"model": "filmReviewApp.advertisement", "pk": 1, "fields": {"section": "movie", "img_src": "filmReviewApp/images/uploads/ads1.png", "img_width": 336, "img_height": 296}}, {"model": "filmReviewApp.advertisement", "pk": 2, "fields": {"section": "news", "img_src": "filmReviewApp/images/uploads/ads2.png", "img_width": 728, "img_height": 106}}]
+[
+{
+  "model": "filmReviewApp.advertisement",
+  "pk": 1,
+  "fields": {
+    "section": "news",
+    "img_src": "/static/filmReviewApp/images/uploads/ads1.png",
+    "img_width": 336,
+    "img_height": 280
+  }
+},
+{
+  "model": "filmReviewApp.advertisement",
+  "pk": 2,
+  "fields": {
+    "section": "news",
+    "img_src": "/static/filmReviewApp/images/uploads/ads2.png",
+    "img_width": 336,
+    "img_height": 280
+  }
+}
+]

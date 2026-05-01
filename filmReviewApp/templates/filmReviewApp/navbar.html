@@ -19,7 +19,7 @@
         <a href="index-2.html"
           ><img
             class="logo"
-            src="images/logo1.png"
+            src="{% static 'filmReviewApp/images/logo1.png' %}"
             alt=""
             width="119"
             height="58"
@@ -146,8 +146,8 @@
             </ul>
           </li>
           <li><a href="#">Help</a></li>
-          <li class="loginLink"><a href="#">LOG In</a></li>
-          <li class="btn signupLink"><a href="#">sign up</a></li>
+          <li class="loginLink"><a href="{% url 'login' %}">LOG In</a></li>
+          <li class="btn signupLink"><a href="{% url 'signup' %}">sign up</a></li>
         </ul>
       </div>
       <!-- /.navbar-collapse -->
