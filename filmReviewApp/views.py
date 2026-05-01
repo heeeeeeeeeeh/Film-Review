@@ -23,7 +23,7 @@ def index(request):
         "theaters_coming": models.MovieTheater.objects.filter(type="Coming Soon"),
         "tv_popular": models.MovieTv.objects.filter(type="Popular"),
         "tv_coming": models.MovieTv.objects.filter(type="Coming Soon"),
-        "ads": models.Advertisement.objects.all(),
+        "ads": models.Advertisement.objects.filter(section="movie"),
     }
     template = loader.get_template("filmReviewApp/base.html")
     return HttpResponse(template.render(context, request))
@@ -67,7 +67,7 @@ def movielisting(request):
         "theaters_coming": MovieTheater.objects.filter(type="Coming soon"),
         "tv_popular": MovieTv.objects.filter(type="Popular"),
         "tv_coming": MovieTv.objects.filter(type="Coming soon"),
-        "ads": Advertisement.objects.all(),
+        "ads": Advertisement.objects.filter(section="movie"),
     }
     return render(request, "filmReviewApp/movielist.html", context)
 
