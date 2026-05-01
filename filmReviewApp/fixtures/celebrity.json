@@ -1,0 +1,54 @@
+[
+{
+  "model": "filmReviewApp.celebrity",
+  "pk": 1,
+  "fields": {
+    "img_width": 70,
+    "img_height": 70,
+    "img_src": "/static/filmReviewApp/images/uploads/ceb1.jpg",
+    "anchor_url": "#",
+    "celebrity_name": "Samuel N. Jack",
+    "celebrity_url": "#",
+    "celebrity_type": "Actor"
+  }
+},
+{
+  "model": "filmReviewApp.celebrity",
+  "pk": 2,
+  "fields": {
+    "img_width": 70,
+    "img_height": 70,
+    "img_src": "/static/filmReviewApp/images/uploads/ceb2.jpg",
+    "anchor_url": "#",
+    "celebrity_name": "Benjamin Carroll",
+    "celebrity_url": "#",
+    "celebrity_type": "Actor"
+  }
+},
+{
+  "model": "filmReviewApp.celebrity",
+  "pk": 3,
+  "fields": {
+    "img_width": 70,
+    "img_height": 70,
+    "img_src": "/static/filmReviewApp/images/uploads/ceb3.jpg",
+    "anchor_url": "#",
+    "celebrity_name": "Beverly Griffin",
+    "celebrity_url": "#",
+    "celebrity_type": "Actor"
+  }
+},
+{
+  "model": "filmReviewApp.celebrity",
+  "pk": 4,
+  "fields": {
+    "img_width": 70,
+    "img_height": 70,
+    "img_src": "/static/filmReviewApp/images/uploads/ceb4.jpg",
+    "anchor_url": "#",
+    "celebrity_name": "Justin Weaver",
+    "celebrity_url": "#",
+    "celebrity_type": "Actor"
+  }
+}
+]
