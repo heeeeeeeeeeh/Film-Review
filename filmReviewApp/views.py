@@ -1,3 +1,7 @@
+from django.http import JsonResponse
+
+from filmReviewApp.forms import NewsletterForm
+
 from . import models
 from django.shortcuts import HttpResponse, render, redirect
 from django.template import loader
@@ -83,11 +87,12 @@ from .models import Newsletter
 
 def newsletter_signup(request):
     if request.method == "POST":
-        email = request.POST.get("email")
-        if email:
-         if Newsletter.objects.filter(email=email).exists():
-             messages.error(request, "Email already subscribed")
-         else:
-             Newsletter.objects.create(email=email)
-             messages.success(request, "Succesfully subscribed")
-             return redirect("index")
+        form = NewsletterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Subscribed to newsletter!")
+            return JsonResponse({"message": "Subscribed to newsletter!"})
+        else:
+            messages.error(request, "Invalid email address.")
+            return JsonResponse({"errors": form.errors}, status=400)
+    return JsonResponse({"error": "Invalid request method."}, status=400)
