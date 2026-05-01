@@ -1,3 +1,4 @@
+{% load static %}
 <div class="movie-items">
   <div class="container">
     <div class="row ipad-width">
@@ -128,7 +129,7 @@
         <div class="sidebar">
           <div class="ads">
             {% for ad in ads %}
-            <img src="{{ ad.img_src }}" alt="Advertisement" width="{{ ad.img_width }}" height="{{ ad.img_height }}" />
+            <img src="{% static ad.img_src %}" alt="Advertisement" width="{{ ad.img_width }}" height="{{ ad.img_height }}" />
             {% endfor %}
           </div>
           <div class="celebrities">
