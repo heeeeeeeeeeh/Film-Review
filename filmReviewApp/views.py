@@ -2,11 +2,13 @@ from django import template
 from django.http import JsonResponse
 from django.shortcuts import HttpResponse, render, redirect
 from django.template import loader
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login as auth_login
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib import messages
+from django.urls import reverse
 from . import models
-from .forms import NewsletterForm
+from .forms import LoginForm, NewsletterForm, SignupForm
 
 # Create your views here.
 def index(request):
@@ -25,6 +27,9 @@ def index(request):
         "tv_popular": models.MovieTv.objects.filter(type="Popular"),
         "tv_coming": models.MovieTv.objects.filter(type="Coming Soon"),
         "ads": models.Advertisement.objects.filter(section="movie"),
+        "signup_form": SignupForm(),
+        "login_form": LoginForm(),
+        "newsletter_form": NewsletterForm(),
     }
     template = loader.get_template("filmReviewApp/base.html")
     return HttpResponse(template.render(context, request))
@@ -32,33 +37,27 @@ def index(request):
 
 def login(request):
     if request.method == "POST":
-        username = request.POST.get("username")
-        password = request.POST.get("password")
+        form = LoginForm(data=request.POST)
 
-        user = authenticate(request, username=username, password=password)
-
-        if user is not None:
-            login(request, user)
-            return redirect("index")
+        if form.is_valid():
+            auth_login(request, form.get_user())
+            return JsonResponse({"redirected": "true", "url": reverse("index")})
         else:
-            messages.error(request, "Invalid username or password")
+            return JsonResponse({"errors": form.errors}, status=400)
 
-    return render(request, "filmReviewApp/login.html")
+    return JsonResponse({"error": "Invalid request method."}, status=400)
 
 
 def signup(request):
     if request.method == "POST":
-        username = request.POST.get("username")
-        password = request.POST.get("password")
-
-        if User.objects.filter(username=username).exists():
-            messages.error(request, "Username already exists")
+        form = SignupForm(data=request.POST)
+        if form.is_valid():
+            form.save()
+            return JsonResponse({"message": "Account created successfully!"})
         else:
-            User.objects.create_user(username=username, password=password)
-            messages.success(request, "Account created, login")
-            return redirect("login")
+            return JsonResponse({"errors": form.errors}, status=400)
         
-    return render(request, "filmReviewApp/signup.html")
+    return JsonResponse({"error": "Invalid request method."}, status=400)
 
 
 def movielisting(request):
@@ -82,9 +81,7 @@ def newsletter_signup(request):
         form = NewsletterForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, "Subscribed to newsletter!")
             return JsonResponse({"message": "Subscribed to newsletter!"})
         else:
-            messages.error(request, "Invalid email address.")
             return JsonResponse({"errors": form.errors}, status=400)
     return JsonResponse({"error": "Invalid request method."}, status=400)

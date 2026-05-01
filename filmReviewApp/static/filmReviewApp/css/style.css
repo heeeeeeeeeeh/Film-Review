@@ -8299,3 +8299,9 @@ footer.full-width-ft .ft-copyright {
   font-family: 'Dosis', sans-serif;
   font-weight: 700;
 }
+.error {
+  color: #dd003f;
+}
+.success {
+  color: #dcf836;
+}
