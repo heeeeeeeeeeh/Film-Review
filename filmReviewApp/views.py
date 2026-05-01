@@ -59,19 +59,6 @@ def signup(request):
         
     return JsonResponse({"error": "Invalid request method."}, status=400)
 
-
-def movielisting(request):
-    context = {
-        "celebrities": Celebrity.objects.all(),
-        "theaters_popular": MovieTheater.objects.filter(type="Popular"),
-        "theaters_coming": MovieTheater.objects.filter(type="Coming soon"),
-        "tv_popular": MovieTv.objects.filter(type="Popular"),
-        "tv_coming": MovieTv.objects.filter(type="Coming soon"),
-        "ads": Advertisement.objects.filter(section="movie"),
-    }
-    return render(request, "filmReviewApp/movielist.html", context)
-
-
 def moviesingle(request):
     template = loader.get_template("filmReviewApp/moviesingle.html")
     return HttpResponse(template.render({}, request))
