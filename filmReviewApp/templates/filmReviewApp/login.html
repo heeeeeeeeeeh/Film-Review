@@ -7,26 +7,16 @@
       <div class="row">
         <label for="username">
           Username:
-          <input
-            type="text"
-            name="username"
-            id="username"
-            placeholder="Hugh Jackman"
-            required="required"
-          />
+          {{ login_form.username }}
+          <span class="error error-username"></span>
         </label>
       </div>
 
       <div class="row">
         <label for="password">
           Password:
-          <input
-            type="password"
-            name="password"
-            id="password"
-            placeholder="******"
-            required="required"
-          />
+          {{ login_form.password }}
+          <span class="error error-password"></span>
         </label>
       </div>
       <div class="row">
@@ -42,6 +32,8 @@
       <div class="row">
         <button type="submit">Login</button>
       </div>
+      <span class="error error-non_field_errors"></span>
+      <span class="success success-message"></span>
     </form>
     <div class="row">
       <p>Or via social</p>

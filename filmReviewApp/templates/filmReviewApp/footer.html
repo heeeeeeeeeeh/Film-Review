@@ -48,10 +48,13 @@
         </p>
         <form action="{% url 'newsletter' %}" method="POST">
           {% csrf_token %}
-          <input type="text" name="email" placeholder="Enter your email..." />
+          {{ newsletter_form.email }}
           <button type="submit" class="btn">
             Subscribe now <i class="ion-ios-arrow-forward"></i>
           </button>
+          <br />
+          <span class="error error-email"></span>
+          <span class="success success-message"></span>
         </form>
       </div>
     </div>
