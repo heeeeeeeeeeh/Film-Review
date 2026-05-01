@@ -8208,6 +8208,21 @@ footer .flex-parent-ft .flex-child-ft a.btn {
   font-weight: bold;
   text-transform: uppercase;
 }
+button.btn {
+  font-family: 'Dosis', sans-serif;
+  font-size: 14px;
+  color: #dd003f;
+  font-weight: bold;
+  text-transform: uppercase;
+  display: inline;
+  padding: 0;
+  border: 0;
+  cursor: pointer;
+  background: transparent;
+  color:  #dd003f;
+  -webkit-appearance: none;
+  margin-top: 30px;
+}
 footer .flex-parent-ft .flex-child-ft form {
   margin-bottom: 20px;
 }

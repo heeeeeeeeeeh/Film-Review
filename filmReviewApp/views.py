@@ -1,11 +1,12 @@
-from . import models
+from django import template
+from django.http import JsonResponse
 from django.shortcuts import HttpResponse, render, redirect
 from django.template import loader
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.contrib import messages
-from .models import Celebrity, MovieTheater, MovieTv, Advertisement
-
+from . import models
+from .forms import NewsletterForm
 
 # Create your views here.
 def index(request):
@@ -75,3 +76,15 @@ def movielisting(request):
 def moviesingle(request):
     template = loader.get_template("filmReviewApp/moviesingle.html")
     return HttpResponse(template.render({}, request))
+
+def newsletter_signup(request):
+    if request.method == "POST":
+        form = NewsletterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Subscribed to newsletter!")
+            return JsonResponse({"message": "Subscribed to newsletter!"})
+        else:
+            messages.error(request, "Invalid email address.")
+            return JsonResponse({"errors": form.errors}, status=400)
+    return JsonResponse({"error": "Invalid request method."}, status=400)

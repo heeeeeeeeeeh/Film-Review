@@ -8,3 +8,4 @@ from .MovieTheater import MovieTheater
 from .MovieTv import MovieTv
 from .News import News
 from .Tweet import Tweet
+from .Newsletter import Newsletter
