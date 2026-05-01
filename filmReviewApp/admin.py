@@ -1,12 +1,26 @@
 from django.contrib import admin
+from .models import (
+    Trailer,
+    Slider,
+    SocialLink,
+    Genre,
+    Advertisement,
+    News,
+    Tweet,
+    Celebrity,
+    MovieTheater,
+    MovieTv,
+)
 
-from . import models
 
 # Register your models here.
-admin.site.register(models.Trailer)
-admin.site.register(models.Slider)
-admin.site.register(models.SocialLink)
-admin.site.register(models.Genre)
-admin.site.register(models.Advertisement)
-admin.site.register(models.News)
-admin.site.register(models.Tweet)
+admin.site.register(Trailer)
+admin.site.register(Slider)
+admin.site.register(SocialLink)
+admin.site.register(Genre)
+admin.site.register(Advertisement)
+admin.site.register(MovieTv)
+admin.site.register(MovieTheater)
+admin.site.register(Celebrity)
+admin.site.register(News)
+admin.site.register(Tweet)
